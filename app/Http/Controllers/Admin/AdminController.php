@@ -10,7 +10,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('frontend.dashboard');
+        $users = Member::where('id', '!=', 0)->count();
+        return view('frontend.dashboard', compact('users'));
     }
 
     public function tampilan()
@@ -30,7 +31,7 @@ class AdminController extends Controller
                 $item->no_kamar,
                 $item->nama_kamar,
                 $item->fasilitas,
-                '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a>, <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
+                '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
             ];
         }
 
@@ -47,28 +48,31 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $status = Member::storeUser($request);
-        if($status) return redirect('/pengunjung');
+        if($status) return redirect('/user');
         else return redirect('/form-input');
     }
     
 
     public function edit($id)
     {
-        $member = Member::find($id);
-        return view('frontend.edit', compact('member'));
+        $data['member'] = Member::find($id);
+
+        return view('frontend.edit', $data);
     }
 
-    public function updateUser(Request $request, $id)
+    public function update(Request $request)
     {
-        $status = Member::updateUser($request, $id);
-        if($status) return redirect('/pengunjung');
-        else return redirect('/edit'.$id);
+        $update = Member::updateUser($request);
+
+        if($update) return redirect('/user');
+        else return 'gagal update data';
     }
+
 
     public function delete($id)
     {
         $status = Member::deleteUser($id);
-        if($status) return redirect('/pengunjung');
-        else return redirect('/pengunjung');
+        if($status) return redirect('/user');
+        else return redirect('/user');
     }
 }

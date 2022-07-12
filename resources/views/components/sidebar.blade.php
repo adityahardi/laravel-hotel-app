@@ -15,8 +15,8 @@
         </a>
       </li>
 
-      <li class="sidebar-item {{ str_contains(request()->path(), 'pengunjung') ? 'active' : null }}">
-        <a class="sidebar-link" href="/pengunjung">
+      <li class="sidebar-item {{ str_contains(request()->path(), 'user') ? 'active' : null }}">
+        <a class="sidebar-link" href="/user">
           <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
         </a>
       </li>
