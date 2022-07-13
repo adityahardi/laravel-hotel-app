@@ -42,7 +42,6 @@
                                     <p class="text-muted">
                                        Silahkan tunggu pemberitahuan CHECK-IN dari kami.
                                     </p>
-                                    {{-- make copyright name --}}
                                     <a href="" class="btn btn-primary">Kembali Ke Halaman Utama</a>
                                     <p class="text-muted">
                                         <small>
