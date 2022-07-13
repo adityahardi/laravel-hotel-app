@@ -19,19 +19,25 @@ use App\Http\Controllers\PesanController;
 //     return view('frontend.dashboard');
 // });
 
+// Route Untuk User
+
 Route::get('/dashboard', [AdminController::class, 'index']);
 Route::get('/user', [AdminController::class, 'tampilan']);
-Route::get('/order-detail', [AdminController::class, 'tampilanOrder']);
 Route::get('/form-input', [AdminController::class, 'create']);
 Route::post('/store-user', [AdminController::class, 'store']);
 Route::get('/datatable/user', [AdminController::class, 'datatableUser']);
-Route::get('/datatable/order', [PesanController::class, 'datatableOrder']);
 Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('frontend.edit');
 Route::post('/update-user', [AdminController::class, 'update']);
 Route::get('/delete/{id}', [AdminController::class, 'delete']);
+
+
+// Route untuk pesan
+
+Route::get('/order-detail', [AdminController::class, 'tampilanOrder']);
 Route::get('/', [PesanController::class, 'createOrder']);
+Route::post('/order-sukses', [PesanController::class, 'storePesan']);
+Route::get('/datatable/order', [PesanController::class, 'datatableOrder']);
 Route::get('/edit-order/{id}', [PesanController::class, 'editOrder'])->name('frontend.edit-order');
 Route::post('/update-order', [PesanController::class, 'updateOrderDetail']);
 Route::get('/delete-order/{id}', [PesanController::class, 'destroyOrder']);
-Route::post('/order-sukses', [PesanController::class, 'storePesan']);
 Route::get('/sukses', [PesanController::class, 'suksesOrder']);

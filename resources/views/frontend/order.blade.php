@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | AdminKit Demo</title>
+	<title>Order | Hotel Aditya</title>
 
 	<link href="adminkit/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -66,7 +66,7 @@
                                         </div>
                                         <div class="mb-4">
                                             <label for="exampleInputEmail1">No Kamar</label>
-                                            <input class="form-control" name="no_kamar" rows="3" placeholder="No Kamar">
+                                            <input type="number" class="form-control" name="no_kamar" rows="3" placeholder="No Kamar">
                                         </div>
                                         <div class="mb-4">
                                             <label for="exampleInputEmail1">Nama Kamar</label>
