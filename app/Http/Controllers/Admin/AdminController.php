@@ -20,6 +20,11 @@ class AdminController extends Controller
         return view('frontend.user')->with('members', $members);
     }
 
+    public function tampilanOrder()
+    {
+        return view('frontend.order-data');
+    }
+
     public function datatableUser()
     {
         $data = [];
@@ -28,9 +33,10 @@ class AdminController extends Controller
             $data[] = [
                 $item->id,
                 $item->nama_user,
-                $item->no_kamar,
-                $item->nama_kamar,
-                $item->fasilitas,
+                $item->jenis_kelamin,
+                $item->no_telepon,
+                $item->email,
+                $item->alamat,
                 '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
             ];
         }

@@ -13,9 +13,10 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Nama User</th>
-            <th scope="col">No Kamar</th>
-            <th scope="col">Nama Kamar</th>
-            <th scope="col">Fasilitas</th>
+            <th scope="col">Jenis Kelamin</th>
+            <th scope="col">No Telepon</th>
+            <th scope="col">Email</th>
+            <th scope="col">Alamat</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
