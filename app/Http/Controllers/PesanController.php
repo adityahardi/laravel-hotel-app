@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Fasilitas;
+use App\Models\Kamar;
 use Illuminate\Http\Request;
 use App\Models\Member;
 
@@ -60,16 +63,20 @@ class PesanController extends Controller
 
     public function datatableOrder()
     {
+        $order = Booking::get();
         $data = [];
-        $order = Member::get();
         foreach ($order as $item) {
+            $member = Member::get($item->id);
+            $kamar = Kamar::get($item->kamar_id);
+            $fasilitas = Fasilitas::get($item->fasilitas_id);
             $data[] = [
-                $item->id,
-                $item->nama_user,
-                $item->no_kamar,
-                $item->nama_kamar,
-                $item->fasilitas,
-                '<a href="/edit-order/'.$item->id.'" class="btn btn-primary">Tambah / Edit Order</a> <a href="/delete-order/'.$item->id.'" class="btn btn-danger">Cancel Order</a>'
+                $member->nama_user,
+                $member->no_telepon,
+                $kamar->no_kamar,
+                $kamar->nama_kamar,
+                $fasilitas->nama_fasilitas,
+                $fasilitas->harga,
+                '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
             ];
         }
 

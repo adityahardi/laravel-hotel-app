@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\FasilitasController;
+use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PesanController;
+use App\Models\Fasilitas;
+use App\Models\Kamar;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +45,13 @@ Route::get('/edit-order/{id}', [PesanController::class, 'editOrder'])->name('fro
 Route::post('/update-order', [PesanController::class, 'updateOrderDetail']);
 Route::get('/delete-order/{id}', [PesanController::class, 'destroyOrder']);
 Route::get('/sukses', [PesanController::class, 'suksesOrder']);
+
+// Route Untuk Kamar
+Route::get('/kamar', [KamarController::class, 'index']);
+Route::get('/input-kamar', [KamarController::class, 'createKamar']);
+Route::post('/store-kamar', [KamarController::class, 'storeKamar']);
+Route::get('/datatable/kamar', [KamarController::class, 'datatableKamar']);
+
+
+// Route Untuk Fasilitas
+Route::get('/fasilitas', [FasilitasController::class, 'index']);

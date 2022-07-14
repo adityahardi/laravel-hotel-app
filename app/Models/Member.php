@@ -16,10 +16,9 @@ class Member extends Model
         'no_telepon',
         'email',
         'alamat',
-        'no_kamar',
-        'nama_kamar',
-        'fasilitas',
     ];
+
+    
 
     // Bagian User Validasi
 
@@ -69,15 +68,23 @@ class Member extends Model
     // Bagian  Order Validasi
     public function scopeCreateOrder($query, $request)
     {
+        
+        
+        $kamar = Kamar::find($request->kamar_id);
+        $fasilitas = Fasilitas::find($request->fasilitas_id);
+
         $status = $query->create([
             'nama_user' => $request->nama_user,
             'jenis_kelamin' => $request->jenis_kelamin,
             'no_telepon' => $request->no_telepon,
             'email' => $request->email,
             'alamat' => $request->alamat,
-            'no_kamar' => $request->no_kamar,
             'nama_kamar' => $request->nama_kamar,
-            'fasilitas' => $request->fasilitas,
+            'nama_fasilitas' => $request->fasilitas,
+            'harga' => $request->harga,
+            'kamar_id' => $request->kamar_id,
+            'fasilitas_id' => $request->fasilitas_id,
+            'user_id' => $request->user_id,
         ]);
 
         if(!$status) return false;

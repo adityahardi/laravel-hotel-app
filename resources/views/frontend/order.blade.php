@@ -76,6 +76,10 @@
                                             <label for="exampleInputEmail1">Fasilitas Kamar</label>
                                             <input class="form-control" name="fasilitas" rows="3" placeholder="Masukkan Fasilitas Kamar">
                                         </div>
+										<div class="mb-4">
+											<label for="exampleInputEmail1">Harga Kamar</label>
+											<input type="number" class="form-control" name="harga" rows="3" placeholder="Harga Kamar">
+										</div>
 										<div class="text-center mt-3">
 											<button type="submit" class="btn btn-lg btn-primary">Pesan Sekarang!</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
