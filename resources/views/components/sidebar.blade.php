@@ -5,8 +5,8 @@
     </a>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-header">
-        Menu
+      <li class="sidebar-header fs-5">
+       Main Menu
       </li>
 
       <li class="sidebar-item {{ str_contains(request()->path(), 'dashboard') ? 'active' : null }}">

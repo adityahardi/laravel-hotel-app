@@ -10,19 +10,20 @@
             <table class="table datatable" id="order">
                 <thead>
                     <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Nama User</th>
-                        <th class="col">No Telepon</th>
-                        <th scope="col">No Kamar</th>
+                        <th scope="col">No Telepon</th>
                         <th scope="col">Nama Kamar</th>
                         <th scope="col">Fasilitas</th>
                         <th scope="col">Total Harga</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Tanggal Booking</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     
                 </tbody>
-            </table>
+        </table>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

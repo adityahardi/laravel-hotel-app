@@ -8,20 +8,6 @@ use Illuminate\Http\Request;
 class KamarController extends Controller
 {
     
-    public function datatableKamar()
-    {
-        $data = [];
-        $kamar = Kamar::get();
-        foreach ($kamar as $item) {
-            $data[] = [
-                $item->id,
-                $item->nama_kamar,
-                '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
-            ];
-        }
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +17,25 @@ class KamarController extends Controller
     {
         return view('frontend.kamar.data-kamar');
     }
+    
+    
+    
+    public function datatableKamar()
+    {
+        $data = [];
+        $kamar = Kamar::get();
+        foreach ($kamar as $item) {
+            $data[] = [
+                $item->id,
+                $item->nama_kamar,
+                    // '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
+            ];
+        }
 
+        return [
+            'data' => $data,
+        ];
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -3,15 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\Kamar;
+use App\Models\Fasilitas;
 
 class AdminController extends Controller
 {
     public function index()
     {
         $users = Member::where('id', '!=', 0)->count();
-        return view('frontend.dashboard', compact('users'));
+        $booking = Booking::Where('id', '!=', 0)->count();
+        $kamar = Kamar::Where('id', '!=', 0)->count();
+        $fasilitas = Fasilitas::Where('id', '!=', 0)->count();
+        return view('frontend.dashboard', compact('users', 'booking', 'kamar', 'fasilitas'));
     }
 
     public function tampilan()

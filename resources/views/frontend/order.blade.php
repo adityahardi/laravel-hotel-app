@@ -11,7 +11,7 @@
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
+	<script src="https://kit.fontawesome.com/c2feacf569.js" crossorigin="anonymous"></script>
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
 	<title>Order | Hotel Aditya</title>
@@ -65,16 +65,17 @@
                                             <textarea class="form-control" name="alamat" rows="3" placeholder="Masukkan Alamat Lengkap"></textarea>
                                         </div>
                                         <div class="mb-4">
-                                            <label for="exampleInputEmail1">No Kamar</label>
-                                            <input type="number" class="form-control" name="no_kamar" rows="3" placeholder="No Kamar">
-                                        </div>
-                                        <div class="mb-4">
                                             <label for="exampleInputEmail1">Nama Kamar</label>
-                                            <input class="form-control" name="nama_kamar" rows="3" placeholder="Nama Kamar">
+                                            <select name="" id="" class="form-control">
+												<option value="">- Pilih Kamar
+												@foreach ($kamar as $item)
+													<option value="{{ $item->id }}" >{{ $item->nama_kamar }}</option>
+												@endforeach
+											</select>
                                         </div>
                                         <div class="mb-4">
                                             <label for="exampleInputEmail1">Fasilitas Kamar</label>
-                                            <input class="form-control" name="fasilitas" rows="3" placeholder="Masukkan Fasilitas Kamar">
+                                            <input class="form-control" name="namas_fasilitas" rows="3" placeholder="Masukkan Fasilitas Kamar">
                                         </div>
 										<div class="mb-4">
 											<label for="exampleInputEmail1">Harga Kamar</label>
@@ -83,6 +84,12 @@
 										<div class="text-center mt-3">
 											<button type="submit" class="btn btn-lg btn-primary">Pesan Sekarang!</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+										</div>
+										<br>
+										<div class="position-relative">
+											<div class="position-absolute top-50 start-50 translate-middle">
+												<i class="fas fa-book fa-2xl fa-beat"></i>
+											</div>
 										</div>
 									</form>
 								</div>

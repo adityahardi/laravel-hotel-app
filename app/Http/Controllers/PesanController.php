@@ -17,7 +17,8 @@ class PesanController extends Controller
      */
     public function createOrder()
     {
-        return view('frontend.order');
+        $kamar = Kamar::all();
+        return view('frontend.order', compact('kamar'));
     }
 
     /**
@@ -27,9 +28,12 @@ class PesanController extends Controller
      */
     public function storePesan(Request $request)
     {
-        $store = Member::createOrder($request);
-        if($store) return redirect('/sukses');
-        else return redirect('/');
+        $data['members'] = Member::get();
+        $data['fasilitas'] = Fasilitas::get();
+        $data['kamar'] = Kamar::get();
+        $data['booking'] = Booking::get();
+
+
     }
 
     public function suksesOrder()
@@ -56,27 +60,31 @@ class PesanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showTest()
     {
         //
     }
 
     public function datatableOrder()
     {
-        $order = Booking::get();
         $data = [];
-        foreach ($order as $item) {
-            $member = Member::get($item->id);
-            $kamar = Kamar::get($item->kamar_id);
-            $fasilitas = Fasilitas::get($item->fasilitas_id);
+        $booking = Booking::get();
+
+        foreach($booking as $item) {
+            $member = Member::find($item->id);
+            $kamar = Kamar::find($item->id);
+            $fasilitas = Fasilitas::find($item->id);
+
             $data[] = [
+                $item->id,
                 $member->nama_user,
                 $member->no_telepon,
-                $kamar->no_kamar,
                 $kamar->nama_kamar,
                 $fasilitas->nama_fasilitas,
                 $fasilitas->harga,
-                '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
+                $item->tanggal_booking,
+
+                '<a href="" class="btn btn-primary">Check IN</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Check OUT</a>'
             ];
         }
 

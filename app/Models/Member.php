@@ -68,28 +68,27 @@ class Member extends Model
     // Bagian  Order Validasi
     public function scopeCreateOrder($query, $request)
     {
-        
-        
-        $kamar = Kamar::find($request->kamar_id);
-        $fasilitas = Fasilitas::find($request->fasilitas_id);
+        // $kamar = Kamar::find($request->kamar_id);
+        // $fasilitas = Fasilitas::find($request->fasilitas_id);
+        // $user = Member::find($request->user_id);
+        // $data = $request->all();
 
-        $status = $query->create([
-            'nama_user' => $request->nama_user,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'no_telepon' => $request->no_telepon,
-            'email' => $request->email,
-            'alamat' => $request->alamat,
-            'nama_kamar' => $request->nama_kamar,
-            'nama_fasilitas' => $request->fasilitas,
-            'harga' => $request->harga,
-            'kamar_id' => $request->kamar_id,
-            'fasilitas_id' => $request->fasilitas_id,
-            'user_id' => $request->user_id,
-        ]);
+        // $user = new Member;
+        // $user->nama_user = $data['nama_user'];
+        // $user->jenis_kelamin = $data['jenis_kelamin'];
+        // $user->no_telepon = $data['no_telepon'];
+        // $user->email = $data['email'];
+        // $user->alamat = $data['alamat'];
+        // $user->save();
 
-        if(!$status) return false;
+        // $kamar = new Kamar;
+        // $kamar->nama_kamar = $data['nama_kamar'];
+        // $kamar->save();
 
-        else true;
+        // $fasilitas = new Fasilitas;
+        // $fasilitas->nama_fasilitas = $data['nama_fasilitas'];
+        // $fasilitas->harga = $data['harga'];
+        // $fasilitas->save();
     }
 
 

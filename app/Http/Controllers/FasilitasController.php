@@ -14,7 +14,25 @@ class FasilitasController extends Controller
      */
     public function index()
     {
-        return view('frontend.data-fasilitas');
+        return view('frontend.fasilitas.data-fasilitas');
+    }
+
+    public function datatableFasilitas()
+    {
+        $data = [];
+        $fasilitas = Fasilitas::get();
+        foreach ($fasilitas as $item) {
+            $data[] = [
+                $item->id,
+                $item->nama_fasilitas,
+                $item->harga,
+                '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
+            ];
+        }
+
+        return [
+            'data' => $data,
+        ];
     }
 
     /**
@@ -22,9 +40,9 @@ class FasilitasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createFas()
     {
-        //
+        return view('frontend.fasilitas.add-fasilitas');
     }
 
     /**
@@ -33,9 +51,11 @@ class FasilitasController extends Controller
      * @param  \App\Http\Requests\StoreFasilitasRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeFas(Request $request)
     {
-        //
+        $store = Fasilitas::storeFasilitas($request);
+        if($store) return redirect('/fasilitas');
+        else return redirect('/');
     }
 
     /**

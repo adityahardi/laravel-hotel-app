@@ -48,10 +48,13 @@ Route::get('/sukses', [PesanController::class, 'suksesOrder']);
 
 // Route Untuk Kamar
 Route::get('/kamar', [KamarController::class, 'index']);
+Route::get('/datatable/kamar', [KamarController::class, 'datatableKamar']);
 Route::get('/input-kamar', [KamarController::class, 'createKamar']);
 Route::post('/store-kamar', [KamarController::class, 'storeKamar']);
-Route::get('/datatable/kamar', [KamarController::class, 'datatableKamar']);
 
 
 // Route Untuk Fasilitas
 Route::get('/fasilitas', [FasilitasController::class, 'index']);
+Route::get('/datatable/fasilitas', [FasilitasController::class, 'datatableFasilitas']);
+Route::get('/input-fasilitas', [FasilitasController::class, 'createFas']);
+Route::post('/store-fasilitas', [FasilitasController::class, 'storeFas']);

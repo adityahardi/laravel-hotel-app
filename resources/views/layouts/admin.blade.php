@@ -13,6 +13,7 @@
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+	<script src="https://kit.fontawesome.com/c2feacf569.js" crossorigin="anonymous"></script>
 
 	<title>Hotel App</title>
 
