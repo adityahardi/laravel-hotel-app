@@ -39,7 +39,8 @@ Route::get('/delete/{id}', [AdminController::class, 'delete']);
 
 Route::get('/order-detail', [AdminController::class, 'tampilanOrder']);
 Route::get('/', [PesanController::class, 'createOrder']);
-Route::post('/order-sukses', [PesanController::class, 'storePesan']);
+Route::post('/store-order', [PesanController::class, 'storePesan']);
+Route::get('/order-sukses', [PesanController::class, 'suksesOrder']);
 Route::get('/datatable/order', [PesanController::class, 'datatableOrder']);
 Route::get('/edit-order/{id}', [PesanController::class, 'editOrder'])->name('frontend.edit-order');
 Route::post('/update-order', [PesanController::class, 'updateOrderDetail']);

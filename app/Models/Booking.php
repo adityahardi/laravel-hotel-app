@@ -14,6 +14,7 @@ class Booking extends Model
         'fasilitas_id',
         'user_id',
         'tanggal_booking',
+        'total_harga',
     ];
 
     public function kamar()

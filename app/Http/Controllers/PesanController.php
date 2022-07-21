@@ -7,6 +7,7 @@ use App\Models\Fasilitas;
 use App\Models\Kamar;
 use Illuminate\Http\Request;
 use App\Models\Member;
+use Carbon\Carbon;
 
 class PesanController extends Controller
 {
@@ -17,8 +18,10 @@ class PesanController extends Controller
      */
     public function createOrder()
     {
-        $kamar = Kamar::all();
-        return view('frontend.order', compact('kamar'));
+        $kamar = Kamar::where('is_booked', 0)->get();
+        $fasilitas = Fasilitas::all();
+
+        return view('frontend.order', compact('kamar', 'fasilitas'));
     }
 
     /**
@@ -28,12 +31,26 @@ class PesanController extends Controller
      */
     public function storePesan(Request $request)
     {
-        $data['members'] = Member::get();
-        $data['fasilitas'] = Fasilitas::get();
-        $data['kamar'] = Kamar::get();
-        $data['booking'] = Booking::get();
+        $kamar          = Kamar::find($request->kamar);
+        $fasilitas      = Fasilitas::find($request->fasilitas);
+        $hargaKamar     = Kamar::hargaKamar($kamar->nama_kamar);
+        $datetime       = Carbon::now();
+        $user           = Member::create($request->except('_token', 'kamar', 'nama_fasilitas', 'harga'));
+        $total_harga    = $hargaKamar + $fasilitas->harga;
 
+        $store = Booking::create([
+            'kamar_id'          => $kamar->id,
+            'fasilitas_id'      => $fasilitas->id,
+            'user_id'           => $user->id,
+            'tanggal_booking'   => $datetime->format('Y-m-d'),
+            'total_harga'       => $total_harga
+        ]);
 
+        $setIsBooked = Kamar::where('id', $kamar->id)->update([
+            'is_booked' => 1,
+        ]);
+
+        return redirect('/order-sukses')->with('success', 'Pemesanan berhasil');
     }
 
     public function suksesOrder()
@@ -71,18 +88,15 @@ class PesanController extends Controller
         $booking = Booking::get();
 
         foreach($booking as $item) {
-            $member = Member::find($item->id);
-            $kamar = Kamar::find($item->id);
-            $fasilitas = Fasilitas::find($item->id);
 
             $data[] = [
                 $item->id,
-                $member->nama_user,
-                $member->no_telepon,
-                $kamar->nama_kamar,
-                $fasilitas->nama_fasilitas,
-                $fasilitas->harga,
+                $item->user->nama_user,
+                $item->user->no_telepon,
+                $item->kamar->nama_kamar,
+                $item->fasilitas->nama_fasilitas,
                 $item->tanggal_booking,
+                $item->total_harga,
 
                 '<a href="" class="btn btn-primary">Check IN</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Check OUT</a>'
             ];

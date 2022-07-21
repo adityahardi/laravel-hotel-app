@@ -5,10 +5,10 @@
 
   <div class="card">
     <div class="card-header">
-      User Data <a href="/form-input" class="btn btn-primary float-end">Tambah User</a>
+      User Data 
     </div>
     <div class="card-body">
-      <table class="table datatable" id="user">
+      <table class="table table-hover dataTable no-footer datatable" id="user">
         <thead>
           <tr>
             <th scope="col">ID</th>

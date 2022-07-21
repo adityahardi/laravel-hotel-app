@@ -38,4 +38,18 @@ class Kamar extends Model
 
         else true;
     }
+
+    public function scopeHargakamar($query, $nama_kamar)
+    {
+        $harga = 150000;
+        
+        if($nama_kamar == 'Vip'){
+            $harga = 500000;    
+        } else if($nama_kamar == 'RedRooms') {
+            $harga = 200000;
+        }
+        
+
+        return $harga;
+    }
 }

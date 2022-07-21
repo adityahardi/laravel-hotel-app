@@ -38,7 +38,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form method="POST" action="/order-sukses">
+									<form method="POST" action="/store-order">
                                         @csrf
 										<div class="mb-4">
                                             <label for="exampleInputEmail1">Nama User</label>
@@ -66,21 +66,22 @@
                                         </div>
                                         <div class="mb-4">
                                             <label for="exampleInputEmail1">Nama Kamar</label>
-                                            <select name="" id="" class="form-control">
+                                            <select name="kamar" id="" class="form-control">
 												<option value="">- Pilih Kamar
 												@foreach ($kamar as $item)
 													<option value="{{ $item->id }}" >{{ $item->nama_kamar }}</option>
 												@endforeach
 											</select>
                                         </div>
-                                        <div class="mb-4">
-                                            <label for="exampleInputEmail1">Fasilitas Kamar</label>
-                                            <input class="form-control" name="namas_fasilitas" rows="3" placeholder="Masukkan Fasilitas Kamar">
-                                        </div>
 										<div class="mb-4">
-											<label for="exampleInputEmail1">Harga Kamar</label>
-											<input type="number" class="form-control" name="harga" rows="3" placeholder="Harga Kamar">
-										</div>
+                                            <label for="exampleInputEmail1">Nama Fasilitas</label>
+                                            <select name="fasilitas" id="" class="form-control">
+												<option value="">- Pilih Fasilitas
+												@foreach ($fasilitas as $item)
+													<option value="{{ $item->id }}" >{{ $item->nama_fasilitas }}</option>
+												@endforeach
+											</select>
+                                        </div>
 										<div class="text-center mt-3">
 											<button type="submit" class="btn btn-lg btn-primary">Pesan Sekarang!</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
@@ -103,7 +104,6 @@
 	</main>
 
 	<script src="js/app.js"></script>
-
 </body>
 
 </html>

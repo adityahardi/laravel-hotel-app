@@ -15,8 +15,8 @@
                         <th scope="col">No Telepon</th>
                         <th scope="col">Nama Kamar</th>
                         <th scope="col">Fasilitas</th>
-                        <th scope="col">Total Harga</th>
                         <th scope="col">Tanggal Booking</th>
+                        <th scope="col">Total Harga</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
