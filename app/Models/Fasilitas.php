@@ -26,4 +26,16 @@ class Fasilitas extends Model
 
         else true;
     }
+
+    public function scopeEditFasilitas($query, $request)
+    {
+        $status = $query->where('id', $request->id)->update([
+            'nama_fasilitas'    => $request->nama_fasilitas,
+            'harga'             => $request->harga,
+        ]);
+        
+        if(!$status) return false;
+
+        else true;
+    }
 }

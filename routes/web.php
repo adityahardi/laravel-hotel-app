@@ -24,38 +24,48 @@ use App\Models\Kamar;
 // });
 
 // Route Untuk User
-
-Route::get('/dashboard', [AdminController::class, 'index']);
-Route::get('/user', [AdminController::class, 'tampilan']);
-Route::get('/form-input', [AdminController::class, 'create']);
-Route::post('/store-user', [AdminController::class, 'store']);
-Route::get('/datatable/user', [AdminController::class, 'datatableUser']);
-Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('frontend.edit');
-Route::post('/update-user', [AdminController::class, 'update']);
-Route::get('/delete/{id}', [AdminController::class, 'delete']);
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/dashboard', 'Admin\AdminController@index');
+    Route::get('/user', 'Admin\AdminController@tampilan');
+    Route::get('/form-input', 'Admin\AdminController@create');
+    Route::post('/store-user', 'Admin\AdminController@store');
+    Route::get('/datatable/user', 'Admin\AdminController@datatableUser');
+    Route::get('/edit/{id}', 'Admin\AdminController@edit')->name('frontend.edit');
+    Route::post('/update-user', 'Admin\AdminController@update');
+    Route::get('/delete/{id}', 'Admin\AdminController@delete');
+    Route::get('/order-detail', 'Admin\AdminController@tampilanOrder');
+});
 
 
 // Route untuk pesan
-
-Route::get('/order-detail', [AdminController::class, 'tampilanOrder']);
-Route::get('/', [PesanController::class, 'createOrder']);
-Route::post('/store-order', [PesanController::class, 'storePesan']);
-Route::get('/order-sukses', [PesanController::class, 'suksesOrder']);
-Route::get('/datatable/order', [PesanController::class, 'datatableOrder']);
-Route::get('/edit-order/{id}', [PesanController::class, 'editOrder'])->name('frontend.edit-order');
-Route::post('/update-order', [PesanController::class, 'updateOrderDetail']);
-Route::get('/delete-order/{id}', [PesanController::class, 'destroyOrder']);
-Route::get('/sukses', [PesanController::class, 'suksesOrder']);
+Route::controller(PesanController::class)->group(function () {
+    Route::get('/', 'PesanController@createOrder');
+    Route::post('/store-order', 'PesanController@storePesan');
+    Route::get('/order-sukses', 'PesanController@suksesOrder');
+    Route::get('/datatable/order', 'PesanController@datatableOrder');
+    Route::get('/edit-order/{id}', 'PesanController@editOrder')->name('frontend.edit-order');
+    Route::post('/update-order', 'PesanController@updateOrderDetail');
+    Route::get('/delete-order/{id}', 'PesanController@destroyOrder');
+    Route::get('/sukses', 'PesanController@suksesOrder');
+});
 
 // Route Untuk Kamar
-Route::get('/kamar', [KamarController::class, 'index']);
-Route::get('/datatable/kamar', [KamarController::class, 'datatableKamar']);
-Route::get('/input-kamar', [KamarController::class, 'createKamar']);
-Route::post('/store-kamar', [KamarController::class, 'storeKamar']);
+Route::controller(KamarController::class)->group(function () {
+    Route::get('/kamar', 'KamarController@index');
+    Route::get('/datatable/kamar', 'KamarController@datatableKamar');
+    Route::get('/input-kamar', 'KamarController@createKamar');
+    Route::post('/store-kamar', 'KamarController@storeKamar');
+    Route::get('/edit-kamar/{id}', 'KamarController@editKamar')->name('frontend.edit-kamar');
+    Route::post('/update-kamar', 'KamarController@updateKamar');
+});
 
 
 // Route Untuk Fasilitas
-Route::get('/fasilitas', [FasilitasController::class, 'index']);
-Route::get('/datatable/fasilitas', [FasilitasController::class, 'datatableFasilitas']);
-Route::get('/input-fasilitas', [FasilitasController::class, 'createFas']);
-Route::post('/store-fasilitas', [FasilitasController::class, 'storeFas']);
+Route::controller(FasilitasController::class)->group(function () {
+    Route::get('/fasilitas', 'FasilitasController@index');
+    Route::get('/datatable/fasilitas', 'FasilitasController@datatableFasilitas');
+    Route::get('/input-fasilitas', 'FasilitasController@createFas');
+    Route::post('/store-fasilitas', 'FasilitasController@storeFas');
+    Route::get('/edit-fasilitas/{id}', 'FasilitasController@editFas')->name('frontend.edit-fasilitas');
+    Route::post('/update-fasilitas', 'FasilitasController@updateFas');
+});

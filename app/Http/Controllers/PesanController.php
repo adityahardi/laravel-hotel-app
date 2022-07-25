@@ -33,7 +33,7 @@ class PesanController extends Controller
     {
         $kamar          = Kamar::find($request->kamar);
         $fasilitas      = Fasilitas::find($request->fasilitas);
-        $hargaKamar     = Kamar::hargaKamar($kamar->nama_kamar);
+        $hargaKamar     = $kamar->harga_kamar;
         $datetime       = Carbon::now();
         $user           = Member::create($request->except('_token', 'kamar', 'nama_fasilitas', 'harga'));
         $total_harga    = $hargaKamar + $fasilitas->harga;
@@ -45,7 +45,7 @@ class PesanController extends Controller
             'tanggal_booking'   => $datetime->format('Y-m-d'),
             'total_harga'       => $total_harga
         ]);
-
+        
         $setIsBooked = Kamar::where('id', $kamar->id)->update([
             'is_booked' => 1,
         ]);
@@ -98,7 +98,7 @@ class PesanController extends Controller
                 $item->tanggal_booking,
                 $item->total_harga,
 
-                '<a href="" class="btn btn-primary">Check IN</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Check OUT</a>'
+                '<a href="" class="btn btn-primary">Check IN</a> <a href="" class="btn btn-danger">Check OUT</a>'
             ];
         }
 

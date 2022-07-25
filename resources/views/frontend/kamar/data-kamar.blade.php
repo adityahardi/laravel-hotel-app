@@ -12,7 +12,8 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nama Kamar</th>
-                        {{-- <th scope="col" class="">Action</th> --}}
+                        <th scope="col">Harga Kamar</th>
+                        <th scope="col" class="">Action</th>
                     </tr>
                 </thead>
                 <tbody>

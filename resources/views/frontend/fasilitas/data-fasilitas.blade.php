@@ -12,7 +12,7 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Fasilitas</th>
-                        <th scope="col">Total Harga</th>
+                        <th scope="col">Harga Fasilitas</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>

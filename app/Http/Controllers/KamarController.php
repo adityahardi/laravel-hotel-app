@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kamar;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
 
 class KamarController extends Controller
 {
@@ -28,7 +29,8 @@ class KamarController extends Controller
             $data[] = [
                 $item->id,
                 $item->nama_kamar,
-                    // '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
+                $item->harga_kamar,
+                    '<a href="/edit-kamar/'.$item->id.'" class="btn btn-primary">Edit</a>'
             ];
         }
 
@@ -76,9 +78,11 @@ class KamarController extends Controller
      * @param  \App\Models\Kamar  $kamar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kamar $kamar)
+    public function editKamar($id)
     {
-        //
+        $data['kamar'] = Kamar::find($id);
+
+        return view('frontend.kamar.edit-kamar', $data);
     }
 
     /**
@@ -88,9 +92,10 @@ class KamarController extends Controller
      * @param  \App\Models\Kamar  $kamar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kamar $kamar)
+    public function updateKamar(Request $request)
     {
-        //
+        $update = Kamar::editKamar($request);
+        if($update) return redirect('/kamar');
     }
 
     /**

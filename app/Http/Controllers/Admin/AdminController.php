@@ -15,7 +15,7 @@ class AdminController extends Controller
     {
         $users = Member::where('id', '!=', 0)->count();
         $booking = Booking::Where('id', '!=', 0)->count();
-        $kamar = Kamar::Where('id', '!=', 0)->count();
+        $kamar = Kamar::Where('is_booked', 0)->count();
         $fasilitas = Fasilitas::Where('id', '!=', 0)->count();
         return view('frontend.dashboard', compact('users', 'booking', 'kamar', 'fasilitas'));
     }

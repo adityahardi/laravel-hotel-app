@@ -26,7 +26,7 @@ class FasilitasController extends Controller
                 $item->id,
                 $item->nama_fasilitas,
                 $item->harga,
-                '<a href="/edit/'.$item->id.'" class="btn btn-primary">Edit</a> <a href="/delete/'.$item->id.'" class="btn btn-danger">Delete</a>'
+                '<a href="/edit-fasilitas/'.$item->id.'" class="btn btn-primary">Edit</a>'
             ];
         }
 
@@ -75,9 +75,11 @@ class FasilitasController extends Controller
      * @param  \App\Models\Fasilitas  $fasilitas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fasilitas $fasilitas)
+    public function editFas($id)
     {
-        //
+        $data['fasilitas'] = Fasilitas::find($id);
+
+        return view('frontend.fasilitas.edit-fasilitas', $data);
     }
 
     /**
@@ -87,9 +89,11 @@ class FasilitasController extends Controller
      * @param  \App\Models\Fasilitas  $fasilitas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fasilitas $fasilitas)
+    public function updateFas(Request $request)
     {
-        //
+        $update = Fasilitas::editFasilitas($request);
+        if($update) return redirect('/fasilitas');
+        else return redirect('/');
     }
 
     /**

@@ -11,6 +11,7 @@ class Kamar extends Model
 
     protected $fillable = [
         'nama_kamar',
+        'harga_kamar',
     ];
 
     // public function booking()
@@ -31,7 +32,8 @@ class Kamar extends Model
     public function scopeStoreKamar($query, $request)
     {
         $status = $query->create([
-            'nama_kamar' => $request->nama_kamar,
+            'nama_kamar'        => $request->nama_kamar,
+            'harga_kamar'       => $request->harga_kamar,
         ]);
 
         if(!$status) return false;
@@ -39,17 +41,30 @@ class Kamar extends Model
         else true;
     }
 
-    public function scopeHargakamar($query, $nama_kamar)
-    {
-        $harga = 150000;
+    // public function scopeHargakamar($query, $nama_kamar)
+    // {
+    //     $harga = 150000;
         
-        if($nama_kamar == 'Vip'){
-            $harga = 500000;    
-        } else if($nama_kamar == 'RedRooms') {
-            $harga = 200000;
-        }
+    //     if($nama_kamar == 'Vip'){
+    //         $harga = 500000;    
+    //     } else if($nama_kamar == 'RedRooms') {
+    //         $harga = 200000;
+    //     }
         
 
-        return $harga;
+    //     return $harga;
+    // }
+
+
+    public function scopeEditKamar($query, $request)
+    {
+        $status = $query->where('id', $request->id)->update([
+            'nama_kamar'        => $request->nama_kamar,
+            'harga_kamar'       => $request->harga_kamar,
+        ]);
+
+        if (!$status) return false;
+
+        else true;
     }
 }

@@ -20,7 +20,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->date('tanggal_booking');
             $table->timestamps();
-
+            
             $table->foreign('kamar_id')->references('id')->on('kamars');
             $table->foreign('fasilitas_id')->references('id')->on('fasilitas');
             $table->foreign('user_id')->references('id')->on('members');
